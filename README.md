@@ -1,15 +1,15 @@
 # XÂY DỰNG WEBSITE BÁN GIÀY 
+
 ## Mô tả dự án
-Website bán giày được xây dựng bằng NodeJs và ExpressJs cho phép người dùng xem qua các sản phẩm giày, thêm vào giỏ hàng và thực hiện đặt hàng. Còn phía người quản trị thì có thể quản lý sản phẩm, quản lý tài khoản người dùng, 
-quản lý đơn hàng và danh mục sản phẩm.
+Website bán giày được xây dựng bằng NodeJs và ExpressJs cho phép người dùng xem qua các sản phẩm giày, thêm vào giỏ hàng và thực hiện đặt hàng. Còn phía người quản trị thì có thể phân quyền, quản lý sản phẩm, quản lý tài khoản người dùng, quản lý đơn hàng và danh mục sản phẩm.
 
 ## Các tính năng
 - Phía người dùng: Đăng nhập, đăng ký tài khoản, xem sản phẩm, xem chi tiết sản phẩm, thêm vào giỏ hàng, thực hiện đặt hàng.
 - Phía người quản trị: Đăng nhập, quản lý danh mục sản phẩm, quản lý sản phẩm, quản lý người dùng, quản lý đơn hàng, phân quyền
   
 ## Các công nghệ sử dụng
-- NodeJ
-- ExpressJS
+- NodeJs
+- ExpressJs
 - Template engine: Pug
 - MongoDb
 - Bootstrap
