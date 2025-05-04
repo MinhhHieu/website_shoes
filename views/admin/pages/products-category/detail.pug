@@ -1,0 +1,34 @@
+extends ../../layouts/default.pug
+
+block main 
+  .product-container(style="display: flex; align-items: flex-start;")
+    if (records.thumbnail)
+      .product-image(style="margin-right: 20px;")
+        img(
+          src=records.thumbnail 
+          style="width: 580px"
+        )
+
+    .product-info(style="flex-grow: 1;")
+      if (records.title)
+        h1(class="mb-4") #{records.title}
+
+      if (records.status)
+        div(class="mb-4") 
+          h5 Trạng thái:
+          if(records.status === "active")
+            span(class="badge badge-success") Hoạt động
+          else 
+            span(class="badge badge-danger") Dừng hoạt động
+
+      if(records.position)
+        h5(class="mb-4") Vị trí: #{records.position}
+
+      if(records.description)
+        h5(class="mb-4") Mô tả: <p>!{records.description}</p>
+
+      a(
+        href=`${prefixAdmin}/products-category/edit/${records.id}`
+        class="btn btn-warning"
+      ) Chỉnh sửa
+

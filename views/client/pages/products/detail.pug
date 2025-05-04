@@ -1,0 +1,54 @@
+extends ../../layouts/default.pug
+
+block main 
+  .container.my-3 
+    .row
+      .col-12 
+        .d-flex
+          .product-image
+            if (product.thumbnail)
+              img(src=product.thumbnail, alt=product.title, style="width: 500px; height: auto;")
+
+          .product-info.ml-4
+            if (product.title)
+              h1.mb-4 #{product.title}
+
+            if(product.category)
+              div.inner-category
+                span Danh mục: 
+                a(href=`/products/${product.category.slug}`) #{product.category.title}
+
+            if (product.price)
+              h4.mb-4 Giá: #{product.priceNew}$
+
+            if (product.discountPercentage)
+              h4.mb-4 
+                span(class="inner-discountt") Giảm giá:
+                span(class="inner-discount-number") #{product.discountPercentage}% 
+
+            if (product.stock)
+              h4.mb-4
+                span(class="inner-stock") Còn lại: 
+                span(class="inner-stock-number") #{product.stock}
+
+            if (product.description)
+              div.mb-4
+                h4 Mô tả:
+                p !{product.description}
+
+            form(
+              action=`/cart/add/${product.id}`
+              method="POST"
+            )
+              input(
+                class="form-control custom-input mb-2"
+                type="number"
+                name="quantity"
+                value="1"
+                min="1"
+                max=product.stock
+                )
+              button(
+                type="submit"
+                class="btn btn-bright btn-block"
+              ) Thêm vào giỏ hàng

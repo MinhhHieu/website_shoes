@@ -1,0 +1,66 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main 
+  +alert-success(1500)
+  +alert-error(2000)
+  
+  .container.my-2
+    .row.justify-content-center 
+      .col-8
+          h2(class="mb-4" style="text-align: center") Đăng ký
+          form(
+            action=`/user/register`
+            method="POST"
+          )
+            div(class="form-group")
+              label(for="fullName") Họ và tên
+              input(
+                type="text"
+                class="form-control"
+                id="fullName"
+                name="fullName"
+                placeholder="Nhập họ tên"
+                )
+
+            div(class="form-group")
+              label(for="email") Email 
+              input(
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Nhập email"
+                )
+
+            div(class="form-group")
+              label(for="phone") SDT 
+              input(
+                type="number"
+                class="form-control"
+                id="phone"
+                name="phone"
+                placeholder="Nhập sdt"
+                )
+
+            div(class="form-group")
+              label(for="password") Mật khẩu
+              input(
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+                placeholder="Nhập password"
+                )
+
+            div(class="form-group")
+              button(
+                type="submit"
+                class="btn btn-primary btn-block"
+              ) Đăng ký
+
+            div(class="form-group")
+              span Quay lại trang | 
+                a(href="/user/login" style="color: blue") Đăng nhập
+          
+              

@@ -1,0 +1,68 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+  if(role.permissions.includes("user_view"))
+    +alert-success(5000)
+    h1(class="mb-4") Danh sách người dùng
+
+    .card.mb-3
+      .card-header Danh sách
+      .card-body
+
+        table(
+          class="table table-hover table-sm mt-3"
+        )
+          thead 
+            tr 
+              th STT
+            
+              th Họ tên
+              th Email
+              th SDT
+              th Trạng thái
+              th Hành động
+
+          tbody 
+            each item, index in records
+              tr 
+                td #{index + 1}
+                td #{item.fullName}
+                td #{item.email}
+                td #{item.phone}
+                td 
+                  if(item.status == "active")
+                    a(
+                      href="javascript:;" 
+                      data-status=item.status
+                      data-id=item.id 
+                      button-change-status
+                      class="badge badge-success"
+                      ) Hoạt động
+                  else 
+                    a(
+                      href="javascript:;" 
+                      data-status=item.status
+                      data-id=item.id 
+                      button-change-status 
+                      class="badge badge-danger"
+                      ) Dừng hoạt động
+                td
+                  if(role.permissions.includes("user_delete"))
+                    button( 
+                      class="btn btn-danger btn-sm ml-2"
+                      button-delete
+                      data-id=item.id 
+                      ) Xoá
+
+    form(
+      action=""
+      method="POST"
+      id="form-delete-item"
+      data-path=`${prefixAdmin}/users/delete`
+      ) 
+
+    script(src="/admin/js/product.js") 
+
+
+    

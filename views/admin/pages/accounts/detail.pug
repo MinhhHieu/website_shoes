@@ -1,0 +1,37 @@
+extends ../../layouts/default.pug
+
+block main 
+  .product-container(style="display: flex; align-items: flex-start;")
+    if (account.avatar)
+      .product-image(style="margin-right: 20px;")
+        img(
+          src=account.avatar 
+          style="width: 250px"
+        )
+
+    .product-info(style="flex-grow: 1;")
+      if (account.fullName)
+        h3(class="mb-4") Tên: #{account.fullName}
+
+      if (account.email)
+        h5(class="mb-4") Email: #{account.email}
+
+      if (account.phone)
+        h5(class="mb-4") SDT: #{account.phone}
+
+      if (role.title)
+        h5(class="mb-4") Phân quyền: #{role.title}
+
+      if (account.status)
+        div(class="mb-4") 
+          h5 Trạng thái:
+          if(account.status === "active")
+            span(class="badge badge-success") Hoạt động
+          else 
+            span(class="badge badge-danger") Dừng hoạt động
+
+      a(
+        href=`${prefixAdmin}/accounts/edit/${account.id}`
+        class="btn btn-warning"
+      ) Chỉnh sửa
+

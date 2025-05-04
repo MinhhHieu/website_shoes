@@ -1,0 +1,44 @@
+extends ../../layouts/default.pug
+
+block main 
+  .product-container(style="display: flex; align-items: flex-start;")
+    if (product.thumbnail)
+      .product-image(style="margin-right: 20px;")
+        img(
+          src=product.thumbnail 
+          style="width: 580px"
+        )
+
+    .product-info(style="flex-grow: 1;")
+      if (product.title)
+        h1(class="mb-4") #{product.title}
+
+      if (product.price)
+        h5(class="mb-4") Giá: #{product.price}$
+
+      if (product.discountPercentage)
+        h5(class="mb-4") Giảm giá: #{product.discountPercentage}%
+
+      if (product.stock)
+        h5(class="mb-4") Còn lại: #{product.stock}
+
+      if (product.status)
+        div(class="mb-4") 
+          h5 Trạng thái:
+          if(product.status === "active")
+            span(class="badge badge-success") Hoạt động
+          else 
+            span(class="badge badge-danger") Dừng hoạt động
+
+      if(product.position)
+        h5(class="mb-4") Vị trí: #{product.position}
+
+      if(product.description)
+        h5(class="mb-4") Mô tả: <p>!{product.description}</p>
+
+      a(
+        href=`${prefixAdmin}/products/edit/${product.id}`
+        class="btn btn-warning"
+      ) Chỉnh sửa
+
+  script(src="/admin/js/product.js") 

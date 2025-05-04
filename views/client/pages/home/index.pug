@@ -1,0 +1,51 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+
+block main 
+  .section-products-featured.my-3
+    .container.my-3 
+      .row 
+        .col-12 
+          +box-head("Sản phẩm nổi bật")
+      .row 
+        each item in productFeatured 
+          .col-4.mb-3 
+            .product-item 
+              a(href=`/products/detail/${item.slug}`)
+                .inner-image 
+                  img(
+                    src=item.thumbnail, 
+                    alt=item.title 
+                  )
+                  if(item.featured == "1")
+                    .inner-featured Nổi bật
+                .inner-content 
+                  h3.inner-title #{item.title}
+                  .inner-price-new #{item.priceNew}$
+                  .inner-price-old #{item.price}$
+                  .inner-discount -#{item.discountPercentage}%
+
+
+  .section-products-news.my-3
+    .container.my-3 
+      .row 
+        .col-12 
+          +box-head("Sản phẩm mới nhất")
+      .row 
+        each item in productNew
+          .col-4.mb-3 
+            .product-item 
+              a(href=`/products/detail/${item.slug}`)
+                .inner-image 
+                  img(
+                    src=item.thumbnail, 
+                    alt=item.title 
+                  )
+                  .inner-featured Mới nhất
+                .inner-content 
+                  h3.inner-title #{item.title}
+                  .inner-price-new #{item.priceNew}$
+                  .inner-price-old #{item.price}$
+                  .inner-discount -#{item.discountPercentage}%
+
+  

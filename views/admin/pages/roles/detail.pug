@@ -1,0 +1,16 @@
+extends ../../layouts/default.pug
+
+block main 
+
+    .product-info(style="flex-grow: 1;")
+      if (records.title)
+        h1(class="mb-4") #{records.title}
+
+      if(records.description)
+        h5(class="mb-4") Mô tả: <p>!{records.description}</p>
+
+      a(
+        href=`${prefixAdmin}/roles/edit/${records.id}`
+        class="btn btn-warning"
+      ) Chỉnh sửa
+

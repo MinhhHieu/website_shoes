@@ -1,0 +1,38 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+  if(role.permissions.includes("order_view"))
+    +alert-success(5000)
+    h1(class="mb-4") Danh sách đơn hàng
+
+    .card.mb-3
+      .card-header Danh sách
+      .card-body
+
+        table.table.table-hover.table-sm.mt-3
+          thead
+            tr
+              th STT
+              th Họ tên
+              th SĐT
+              th Địa chỉ
+              th Tổng SP
+              th Ngày đặt hàng
+              th Hành động
+
+          tbody
+            each order, index in records
+              tr
+                td #{index + 1}
+                td #{order.userInfo.fullName}
+                td #{order.userInfo.phone}
+                td #{order.userInfo.address}
+                td #{order.totalQuantity}
+                td #{order.createdAt.toLocaleString()}
+                td
+                  a(
+                    href=`${prefixAdmin}/order/detail/${order._id}`
+                    class="btn btn-secondary btn-sm mr-1"
+                  ) Chi tiết
+                  

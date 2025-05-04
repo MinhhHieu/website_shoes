@@ -1,0 +1,53 @@
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
+
+block main
+  +alert-success(5000)
+  h1(class="mb-4") Chi tiết đơn hàng
+
+  .card.mb-3
+    .card-header Thông tin đơn hàng
+    .card-body
+      p
+        strong Họ tên: #{order.userInfo.fullName}
+      p
+        strong SĐT: #{order.userInfo.phone}
+      p
+        strong Địa chỉ: #{order.userInfo.address}
+      p
+        strong Ngày đặt hàng: #{order.createdAt.toLocaleString()}
+
+  .card.mb-3
+    .card-header Thông tin sản phẩm
+    .card-body
+      table.table.table-hover.table-sm.mt-3
+        thead
+          tr
+            th STT
+            th Ảnh
+            th Tên sản phẩm
+            th Giá cũ 
+            th Giảm giá
+            th Số lượng
+            th Giá mới
+
+        tbody
+          each product, index in order.products
+            tr
+              td #{index + 1}
+              td
+                img(src=product.thumbnail, alt=product.title, width="100")
+              td #{product.title} 
+              td #{product.price.toLocaleString()}$
+              td #{product.discountPercentage}%
+              td #{product.quantity}
+              td #{(product.price * (100 - product.discountPercentage) / 100).toFixed(0)}$
+
+  .card.mb-3
+    .card-header Tổng tiền
+    .card-body
+      p
+        strong Tổng tiền: #{order.products.reduce((sum, product) => sum + product.price * product.quantity * (100 - product.discountPercentage) / 100, 0).toFixed(0)}$
+
+
+ 

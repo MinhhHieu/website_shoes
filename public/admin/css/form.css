@@ -1,0 +1,55 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('/admin/images/BG.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.container.my-5 {
+  max-width: 400px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.2); 
+  border-radius: 10px;
+}
+
+h1.mb-4 {
+  font-size: 32px;
+  font-weight: 600;
+  text-align: center;
+  color:black;
+  margin-bottom: 30px;
+  letter-spacing: 1px;
+}
+
+input.form-control{
+  background-color: rgba(255, 255, 255, 0.7)
+}
+
+input.form-control:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 8px rgba(0, 86, 179, 0.2);
+}
+
+button.btn.btn-primary.btn-block {
+  background-color: black;
+  opacity: 0.8;
+  border-color: #007bff;
+  color: white;
+  font-size: 18px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+button.btn.btn-primary.btn-block:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+  transform: translateY(-2px); 
+}
+
+button.btn.btn-primary.btn-block:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 86, 179, 0.3);
+}
