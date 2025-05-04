@@ -15,6 +15,6 @@ const createTree = (arr, parentId = "", countRef) => {
 }
 
 module.exports.tree = (arr, parentId = "") => {
-  const countRef = { count: 1 }; // sử dụng object để truyền tham chiếu
+  const countRef = { count: 1 }; 
   return createTree(arr, parentId, countRef);
 };
