@@ -16,6 +16,11 @@ module.exports.registerPost = (req, res, next) => {
     res.redirect("back");
     return;
   }
+  if(!req.body.phone) {
+    req.flash("error", "Vui long nhap so dien thoai!");
+    res.redirect("back");
+    return
+  }
 
   next();
 };
