@@ -25,20 +25,7 @@ Cách chạy dự án:
  - Người dùng: http://localhost:3000/
  - Người quản trị: http://localhost:3000/admin/auth/login
 
-## Cấu trúc thư mục
-- config: kết nối với DB
-- controllers: xử lý request từ người dùng
-- helpers: chứa các hàm tiện ích có thể tái sử dụng
-- middlewares: dùng kiểm tra xác thực người dùng
-- model: định nghĩa schema dữ liệu
-- node_modules: thư viện cài đặt
-- public: file tĩnh(images,css,js)
-- routes: định nghĩa các đường dẫn url
-- validates: kiểm tra xác thực dữ liệu người dùng gửi lên
-- views: chứa các giao diện
-- .env: biến môi trường
-- .gitignore: file bị loại trừ khi push git
-- index.js: cấu hình chính của ứng dụng
+
   
 
 
