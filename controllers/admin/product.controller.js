@@ -102,67 +102,67 @@ module.exports.changeStatus = async (req, res) => {
 };
 
 // [PATCH]: /admin/products/change-multi
-// module.exports.changeMulti = async (req, res) => {
-//   const type = req.body.type;
-//   const ids = req.body.ids.split(", ");
+module.exports.changeMulti = async (req, res) => {
+  const type = req.body.type;
+  const ids = req.body.ids.split(", ");
 
-//   const updatedBy = {
-//     account_id: res.locals.user.id,
-//     updateAt: new Date()
-//   }
+  const updatedBy = {
+    account_id: res.locals.user.id,
+    updateAt: new Date()
+  }
 
-//   switch (type) {
-//     case "active":
-//       await Product.updateMany({ _id: { $in: ids } }, { 
-//         status: "active",
-//         $push: {updatedBy: updatedBy}
-//        });
-//       req.flash(
-//         "success",
-//         `Cập nhật trạng thái thành công ${ids.length} sản phẩm!`
-//       );
-//       break;
-//     case "inactive":
-//       await Product.updateMany({ _id: { $in: ids } }, { 
-//         status: "inactive",
-//         $push: {updatedBy: updatedBy}
-//       });
-//       req.flash(
-//         "success",
-//         `Cập nhật trạng thái thành công ${ids.length} sản phẩm!`
-//       );
-//       break;
-//     case "delete-all":
-//       await Product.updateMany(
-//         { _id: { $in: ids } },
-//         {
-//           deleted: true,
-//           // deletedAt: new Date(),
-//           deletedBy: {
-//             account_id: res.locals.user.id,
-//             deletedAt: new Date(),
-//           },
-//         }
-//       );
-//       req.flash("success", `Đã xoá thành công ${ids.length} sản phẩm!`);
-//       break;
-//     case "change-position":
-//       for (const item of ids) {
-//         let [id, position] = item.split("-");
-//         position = parseInt(position);
-//         await Product.updateOne({ _id: id }, { 
-//           position: position,
-//           $push: {updatedBy: updatedBy}
-//          });
-//       }
-//       req.flash("success", `Đã đổi vị trí thành công ${ids.length} sản phẩm!`);
-//       break;
-//     default:
-//       break;
-//   }
+  switch (type) {
+    case "active":
+      await Product.updateMany({ _id: { $in: ids } }, { 
+        status: "active",
+        $push: {updatedBy: updatedBy}
+       });
+      req.flash(
+        "success",
+        `Cập nhật trạng thái thành công ${ids.length} sản phẩm!`
+      );
+      break;
+    case "inactive":
+      await Product.updateMany({ _id: { $in: ids } }, { 
+        status: "inactive",
+        $push: {updatedBy: updatedBy}
+      });
+      req.flash(
+        "success",
+        `Cập nhật trạng thái thành công ${ids.length} sản phẩm!`
+      );
+      break;
+    case "delete-all":
+      await Product.updateMany(
+        { _id: { $in: ids } },
+        {
+          deleted: true,
+          // deletedAt: new Date(),
+          deletedBy: {
+            account_id: res.locals.user.id,
+            deletedAt: new Date(),
+          },
+        }
+      );
+      req.flash("success", `Đã xoá thành công ${ids.length} sản phẩm!`);
+      break;
+    case "change-position":
+      for (const item of ids) {
+        let [id, position] = item.split("-");
+        position = parseInt(position);
+        await Product.updateOne({ _id: id }, { 
+          position: position,
+          $push: {updatedBy: updatedBy}
+         });
+      }
+      req.flash("success", `Đã đổi vị trí thành công ${ids.length} sản phẩm!`);
+      break;
+    default:
+      break;
+  }
 
-//   res.redirect("back");
-// };
+  res.redirect("back");
+};
 
 // [DELETE]: /admin/products/delete/:id
 module.exports.deleteItem = async (req, res) => {
