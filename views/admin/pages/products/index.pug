@@ -22,20 +22,20 @@ block main
           .col-6  
             +search(keyword)
 
-    //- .card.mb-3 
-    //-   .card-header Sắp xếp
-    //-   .card-body
-    //-     .row 
-    //-       .col-4
-    //-         +sort()
+    .card.mb-3 
+      .card-header Sắp xếp
+      .card-body
+        .row 
+          .col-4
+            +sort()
 
     .card.mb-3 
       .card-header Danh sách
       .card-body
         .row 
           .col-8
-            //- if(role.permissions.includes("products_edit"))
-            //-   +form-change-multi(`${prefixAdmin}/products/change-multi?_method=PATCH`)
+            if(role.permissions.includes("products_edit"))
+              +form-change-multi(`${prefixAdmin}/products/change-multi?_method=PATCH`)
           .col-4.text-right.mb-2
             if(role.permissions.includes("products_create"))
               a(
