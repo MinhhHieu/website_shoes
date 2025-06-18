@@ -42,9 +42,9 @@ module.exports.createPost = async (req, res) => {
     req.body.position = parseInt(req.body.position);
   }
 
-  if (req.file) {
-    req.body.thumbnail = `/uploads/${req.file.filename}`;
-  }
+  // if (req.file) {
+  //   req.body.thumbnail = `/uploads/${req.file.filename}`;
+  // }
 
   const record = new ProductCategory(req.body);
   await record.save();
@@ -85,9 +85,9 @@ module.exports.editPatch = async (req, res) => {
 
   const id = req.params.id;
 
-  if (req.file) {
-    req.body.thumbnail = `/uploads/${req.file.filename}`;
-  }
+  // if (req.file) {
+  //   req.body.thumbnail = `/uploads/${req.file.filename}`;
+  // }
 
   req.body.position = parseInt(req.body.position);
 
