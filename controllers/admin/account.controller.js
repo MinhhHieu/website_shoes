@@ -86,10 +86,6 @@ module.exports.edit = async (req, res) => {
 module.exports.editPatch = async (req, res) => {
   const id = req.params.id;
 
-  if (req.file) {
-    req.body.avatar = `/uploads/${req.file.filename}`;
-  }
-
   const emailExits = await Account.findOne({
     _id: {$ne: id},
     email: req.body.email,
